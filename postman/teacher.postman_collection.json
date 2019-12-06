@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "ae2d9f8d-f49e-4ec5-98d7-af48a8b398f8",
+		"name": "teacher",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3bedea10-905a-4875-91bb-9332dcf42cc8",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"tests[\"Body match string 李四\"] = responseBody.has(\"李四\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/teacher.ctl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/teacher.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1c276e2f-14b8-493a-bda9-71867b0a9f1b",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"tests[\"Body match string 李四\"] = responseBody.has(\"李四\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/teacher.ctl?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07d38a4a-6fa6-428d-8867-5391e565b35b",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"增加成功?\"] = jsonData.message === \"增加成功\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\":\"张三\",\r\n        \"degree\":{\"id\":1},\r\n        \"department\":{\"id\":1},\r\n        \"proftitle\":{\"id\":2},\r\n        \"school\":{\"id\":2}\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/teacher.ctl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c41c75ff-e9cc-4210-800f-5a0982dfc7cc",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"修改成功?\"] = jsonData.message === \"修改成功\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"degree\": {\r\n            \"description\": \"博士\",\r\n            \"id\": 1,\r\n            \"no\": \"01\",\r\n            \"remarks\": \"修改\"\r\n        },\r\n        \"department\": {\r\n            \"description\": \"房管\",\r\n            \"id\": 1,\r\n            \"no\": \"01\",\r\n            \"remarks\": \"额\",\r\n            \"school\": {\r\n                \"description\": \"管理工程学院\",\r\n                \"id\": 2,\r\n                \"no\": \"02\",\r\n                \"remarks\": \"the best\"\r\n            }\r\n        },\r\n        \"id\": 2,\r\n        \"name\": \"李四\",\r\n        \"profTitle\": {\r\n            \"description\": \"主任\",\r\n            \"id\": 2,\r\n            \"no\": \"01\",\r\n            \"remarks\": \"无\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/teacher.ctl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/teacher.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23d9b7c1-1f3d-4711-908b-619731d106a3",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"删除成功?\"] = jsonData.message === \"删除成功\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/teacher.ctl?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

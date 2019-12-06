@@ -1,0 +1,4 @@
+rootProject.name = 'JW_32'
+include 'cat'
+findProject(':cat')?.name = 'JW_32'
+
